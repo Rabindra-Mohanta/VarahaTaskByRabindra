@@ -1,11 +1,12 @@
 package com.example.varahataskbyrabindra.presentation.home
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.varahataskbyrabindra.domain.model.UserData
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
@@ -13,7 +14,8 @@ import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel()) {
+    val userList = homeViewModel.state.userDataList
 
     Box(modifier = Modifier.fillMaxSize())
     {
@@ -26,9 +28,14 @@ fun HomeScreen() {
         GoogleMap(
             modifier = Modifier.fillMaxSize(),
             cameraPositionState = cameraPositionState,
-            onMapClick = {})
+            onMapClick = {
+                homeViewModel.addUser(UserData("Rabindra","ff",14,"ff",it.latitude,it.longitude))
+            })
         {
-            Marker(position = markerPosition.value, title = "Rabindra", snippet = "Alkusi")
+            userList.forEach {userData ->
+                Marker(position = LatLng(userData.latitude,userData.longitude), title = userData.name, snippet = userData.address)
+
+            }
         }
     }
 }

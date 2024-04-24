@@ -84,13 +84,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
-    //room dependency
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    implementation("androidx.room:room-paging:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
+
 
     //coroutine dependency
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
@@ -110,11 +104,25 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
     //swipe refreshlayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    //navigation dependency
-    val nav_version = "2.7.7"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+
     //google map
     implementation ("com.google.maps.android:maps-compose:1.0.0")
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
+//navigation dependency
+    val nav_version = "2.7.7"
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //room dependency
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+
 
 }
