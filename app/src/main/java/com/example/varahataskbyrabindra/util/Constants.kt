@@ -9,5 +9,7 @@ object  Constants {
     val Txt_Dialog_Icon = "Dialog Icon"
     val msg_delete = "Are you sure want to delete this user ?"
     val txt_delete = "Delete"
+    val msg_permission_location = "We need location permissions to use this app"
+    val text_permission = "Permission"
 
 }

@@ -72,6 +72,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.6")
     // Optional - Integration with activities
     implementation("androidx.activity:activity-compose:1.9.0")
     //splash screen
@@ -107,8 +108,8 @@ dependencies {
 
 
     //google map
-    implementation ("com.google.maps.android:maps-compose:4.3.3")
-    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.maps.android:maps-compose:4.3.3")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 //navigation dependency
     val nav_version = "2.7.7"
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
@@ -123,6 +124,9 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
+    //permission dependency
+    implementation ("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
+
 
 
 }

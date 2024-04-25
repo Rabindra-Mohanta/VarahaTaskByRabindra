@@ -10,7 +10,7 @@ import com.example.varahataskbyrabindra.util.Constants
 
 
 @Composable
-fun ConfirmDialog(onDismissRequest:()->Unit,onConfirmation:()->Unit,dialogTitle:String,dialogText:String,icon:ImageVector)
+fun ConfirmDialog(onDismissRequest:()->Unit, onConfirmation: ()->Unit, dialogTitle:String, dialogText:String, icon:ImageVector)
 {
     var textStr = ""
 AlertDialog(icon = { Icon(imageVector = icon,contentDescription = Constants.Txt_Dialog_Icon )}, title = { Text(
