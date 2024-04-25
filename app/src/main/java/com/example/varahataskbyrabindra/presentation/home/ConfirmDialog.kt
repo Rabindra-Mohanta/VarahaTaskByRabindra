@@ -1,78 +1,40 @@
 package com.example.varahataskbyrabindra.presentation.home
-
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.varahataskbyrabindra.util.Constants
 
 
 @Composable
-fun ConfirmDialog() {
-    // ...
-    val openAlertDialog = remember { mutableStateOf(false) }
+fun ConfirmDialog(onDismissRequest:()->Unit,onConfirmation:()->Unit,dialogTitle:String,dialogText:String,icon:ImageVector)
+{
+    var textStr = ""
+AlertDialog(icon = { Icon(imageVector = icon,contentDescription = Constants.Txt_Dialog_Icon )}, title = { Text(
+    text = dialogTitle
+)}, text = { TextField(value = textStr, onValueChange = {textStr = it} , label = { Text(text = "Enter Name")})},onDismissRequest = { onDismissRequest()}, confirmButton = { TextButton(onClick = { onConfirmation() }) {
+    Text(Constants.Txt_Confirm)
 
-    // ...
-    when {
-        // ...
-        openAlertDialog.value -> {
-            AlertDialogExample(
-                onDismissRequest = { openAlertDialog.value = false },
-                onConfirmation = {
-                    openAlertDialog.value = false
-                    println("Confirmation registered") // Add logic here to handle confirmation.
-                },
-                dialogTitle = "Alert dialog example",
-                dialogText = "This is an example of an alert dialog with buttons.",
-                icon = Icons.Default.Info
-            )
-        }
-    }
+} }, dismissButton = { TextButton(onClick = { onDismissRequest() }) {
+    Text(Constants.Txt_Dismiss)
+}})
 }
+//var text by remember { mutableStateOf("") }
+//val userInputs = mutableListOf(mutableStateOf(""), mutableStateOf(""))
+// Adjust the number of mutableStateOf instances as needed
+//Column(modifier = Modifier.fillMaxWidth()) {
+//    userInputs.forEachIndexed { index, userInput ->
+//        TextField(
+//            value = userInput.value,
+//            onValueChange = { userInputs[index].value = it },
+//            label = { Text("Input Field ${index + 1}") }
+//        )
+//    }
+//}
 
-@Composable
-fun AlertDialogExample(
-    onDismissRequest: () -> Unit,
-    onConfirmation: () -> Unit,
-    dialogTitle: String,
-    dialogText: String,
-    icon: ImageVector,
-) {
-    AlertDialog(
-        icon = {
-            Icon(icon, contentDescription = "Example Icon")
-        },
-        title = {
-            Text(text = dialogTitle)
-        },
-        text = {
-            Text(text = dialogText)
-        },
-        onDismissRequest = {
-            onDismissRequest()
-        },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    onConfirmation()
-                }
-            ) {
-                Text("Confirm")
-            }
-        },
-        dismissButton = {
-            TextButton(
-                onClick = {
-                    onDismissRequest()
-                }
-            ) {
-                Text("Dismiss")
-            }
-        }
-    )
-}
+
+
+
