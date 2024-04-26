@@ -1,16 +1,15 @@
-package com.example.varahataskbyrabindra.presentation.home
+package com.example.varahataskbyrabindra.presentation.common
 
 import android.Manifest
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import com.google.android.gms.maps.model.LatLng
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun UserPermission()
-{
+fun UserPermission(currentLocation: (LatLng) -> Unit) {
     // this is for permission
     val locationPermissionState = rememberMultiplePermissionsState(
         permissions = listOf(
@@ -19,20 +18,13 @@ fun UserPermission()
         )
     )
     if (locationPermissionState.allPermissionsGranted) {
-
-        GetCurrentLocationOnce(){
-            Log.e("rabindra","userLocation->"+it?.latitude)
-            Log.e("rabindra","userLocation1->"+it?.longitude)
+        GetCurrentLocation() {
+            currentLocation.invoke(it)
         }
 
-
-
-    }
-
-    else {
+    } else {
         LaunchedEffect(key1 = locationPermissionState) {
             locationPermissionState.launchMultiplePermissionRequest()
-
         }
     }
 }

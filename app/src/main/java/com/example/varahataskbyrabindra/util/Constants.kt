@@ -1,5 +1,6 @@
 package com.example.varahataskbyrabindra.util
 
+//variabl constants
 object  Constants {
     val DB_NAME = "Varaha_Rabindra.dp"
     val homeScreen = "homeScreen"
@@ -11,5 +12,8 @@ object  Constants {
     val txt_delete = "Delete"
     val msg_permission_location = "We need location permissions to use this app"
     val text_permission = "Permission"
+    val text_gps_cancelled = "GPS cancelled"
+    val msg_succes_added = "User added success"
+    val msg_succes_deleted = "User deleted success"
 
 }

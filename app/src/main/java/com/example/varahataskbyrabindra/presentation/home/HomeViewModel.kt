@@ -1,9 +1,6 @@
 package com.example.varahataskbyrabindra.presentation.home
+
 import android.annotation.SuppressLint
-import android.content.Context
-import android.location.Geocoder
-import android.os.Build
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -14,29 +11,36 @@ import com.example.varahataskbyrabindra.domain.model.UserData
 import com.example.varahataskbyrabindra.domain.repository.GeocoderRepository
 import com.example.varahataskbyrabindra.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
-import java.util.Locale
 import javax.inject.Inject
+
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val geocoderRepository: GeocoderRepository,private val userRepository: UserRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(
+    private val geocoderRepository: GeocoderRepository,
+    private val userRepository: UserRepository
+) : ViewModel() {
     var state by mutableStateOf(UserInfoState())
     val addressLiveData = MutableLiveData<String>()
+    //for save userLat went they clicked on map
+    var userLat: Double? = null
+    //for save userLng went they clicked on map
+    var userLng: Double? = null
+    //for save userId when deletetion
+    var userDeleteId: Long? = null
+
     init {
+        //get all data
         getAllUserList()
     }
 
-    private fun getAllUserList() {
+    fun getAllUserList() {
         viewModelScope.launch {
             state = state.copy(userDataList = userRepository.getUserListings())
-
         }
     }
 
-    fun deleteUser(id: Long) {
-        viewModelScope.launch {
-            userRepository.deleteUser(id)
-        }
+    fun deleteUser() {
+        viewModelScope.launch { userDeleteId?.let { userRepository.deleteUser(it) } }
     }
 
     fun getUserDetails(id: Long): UserData {
@@ -52,14 +56,15 @@ class HomeViewModel @Inject constructor(private val geocoderRepository: Geocoder
     }
 
     @SuppressLint("SuspiciousIndentation")
-    fun getMarkerAddressDetails(lat:Double, long:Double) {
+    fun getMarkerAddressDetails(lat: Double, long: Double) {
+        userLat = lat
+        userLng = long
         viewModelScope.launch {
-          val address =  geocoderRepository.getAddress(lat,long)
+            val address = geocoderRepository.getAddress(lat, long)
             address?.let {
                 addressLiveData.value = it
             }
         }
-
     }
 }
 

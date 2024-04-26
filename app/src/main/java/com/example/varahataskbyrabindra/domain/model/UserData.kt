@@ -1,3 +1,12 @@
 package com.example.varahataskbyrabindra.domain.model
 
-data class UserData( val name:String, val relation:String, val age:Int, val address:String, val latitude:Double, val longitude:Double)
+//this is data class for user
+data class UserData(
+    val id: Long? = null,
+    val name: String = "",
+    val relation: String = "",
+    val age: String = "",
+    val address: String = "",
+    val latitude: Double? = null,
+    val longitude: Double? = null
+)

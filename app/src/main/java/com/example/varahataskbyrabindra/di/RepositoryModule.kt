@@ -16,8 +16,9 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindUserRepository(userRepositoryImpl: UserRepositoryImpl):UserRepository
+    abstract fun bindUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
+
     @Binds
-    abstract fun bindGeocoderRepository(geocoderRepositoryImpl: GeocoderRepositoryImpl):GeocoderRepository
+    abstract fun bindGeocoderRepository(geocoderRepositoryImpl: GeocoderRepositoryImpl): GeocoderRepository
 
 }

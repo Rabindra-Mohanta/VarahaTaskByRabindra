@@ -7,6 +7,7 @@ import com.example.varahataskbyrabindra.domain.repository.UserRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// implementation of UserRepository with dagger hilt
 @Singleton
 class UserRepositoryImpl @Inject constructor(private val roomDb: VarahaDb) : UserRepository {
     private val userEntityDao = roomDb.userEntityDao
@@ -16,15 +17,12 @@ class UserRepositoryImpl @Inject constructor(private val roomDb: VarahaDb) : Use
         }
         return userDataList
     }
-
     override suspend fun deleteUser(id: Long) {
         userEntityDao.deleteUser(id)
     }
-
     override  fun getDetails(id: Long): UserData {
         return userEntityDao.getUserDetails(id).toUserData()
     }
-
     override suspend fun insertUser(userData: UserData) {
         userEntityDao.insert(userData.toUserEntity())
     }

@@ -75,26 +75,15 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.6.6")
     // Optional - Integration with activities
     implementation("androidx.activity:activity-compose:1.9.0")
-    //splash screen
-    implementation("androidx.core:core-splashscreen:1.0.0")
-    //data store
-    implementation("androidx.datastore:datastore-preferences:1.1.0")
     //coil dependnecy
     implementation("io.coil-kt:coil-compose:2.6.0")
     //retrofit 2.0 dependency
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
-
-
     //coroutine dependency
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
-
-    //paging 3
-    val paging_version = "3.2.1"
-    implementation("androidx.paging:paging-runtime:$paging_version")
-    implementation("androidx.paging:paging-compose:3.3.0-beta01")
     //hilt dependency
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
@@ -103,22 +92,16 @@ dependencies {
     //lifecycle
     val lifecycle_version = "2.7.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
-    //swipe refreshlayout
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
-
     //google map
     implementation("com.google.maps.android:maps-compose:4.3.3")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation ("com.google.android.gms:play-services-location:21.2.0")
-
-//navigation dependency
+     //navigation dependency
     val nav_version = "2.7.7"
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
     //room dependency
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
@@ -128,7 +111,5 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     //permission dependency
     implementation ("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
-
-
 
 }

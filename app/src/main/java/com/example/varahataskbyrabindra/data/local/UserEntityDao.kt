@@ -1,26 +1,27 @@
 package com.example.varahataskbyrabindra.data.local
-import androidx.lifecycle.MutableLiveData
+
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
-
+//this id dao class
 @Dao
 interface UserEntityDao {
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insert(userEntity: UserEntity)
-  @Query("DELETE FROM userentity WHERE id=:id")
-  suspend fun deleteUser(id:Long)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(userEntity: UserEntity)
 
-  @Query("SELECT * FROM userentity WHERE id=:id")
-   fun getUserDetails(id: Long):UserEntity
+    @Query("DELETE FROM userentity WHERE id=:id")
+    suspend fun deleteUser(id: Long)
 
-  @Query("DELETE From userentity")
-  suspend fun deleteAll()
-  @Query("select * from userentity")
-  suspend fun getAllData():List<UserEntity>
+    @Query("SELECT * FROM userentity WHERE id=:id")
+    fun getUserDetails(id: Long): UserEntity
+
+    @Query("DELETE From userentity")
+    suspend fun deleteAll()
+
+    @Query("select * from userentity")
+    suspend fun getAllData(): List<UserEntity>
 
 }
 
