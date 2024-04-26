@@ -1,6 +1,7 @@
 package com.example.varahataskbyrabindra.presentation.home
 
 import android.Manifest
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -18,6 +19,13 @@ fun UserPermission()
         )
     )
     if (locationPermissionState.allPermissionsGranted) {
+
+        GetCurrentLocationOnce(){
+            Log.e("rabindra","userLocation->"+it?.latitude)
+            Log.e("rabindra","userLocation1->"+it?.longitude)
+        }
+
+
 
     }
 

@@ -101,12 +101,14 @@ fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel()) {
             .size(40.dp)
             .padding(end = 10.dp, bottom = 10.dp)
             .clickable {
-                if (!askLocationPermission) {
-                    askLocationPermission = true
-                }
+                askLocationPermission = !askLocationPermission
             },painter = painterResource(id = R.drawable.icon_gps), contentDescription = "gpc" )
 
            if(askLocationPermission)
+           {
+               UserPermission()
+           }
+          else
            {
                UserPermission()
            }
