@@ -4,7 +4,7 @@
 3.Dagger hilt
 4.Google map
 5.GeoCoder
-6.Prmission
+6.Permission
 7.Solid
 8.kotlin
 9.Coroutine
